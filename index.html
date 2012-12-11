@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="stylesheet" type="text/css" href="miestilo.css"  />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Registro de Usuarios</title>
+<script type="text/javascript">
+	function agregarOpcion()
+	{
+		var nuevo = document.getElementById('nuevaopcion');//Se toma el elemento con el nuevo valor.
+		if(nuevo.value)
+		{		
+			var opcion = document.createElement('option');//Se crea el nuevo elemento con etiqueta option.
+			opcion.value = nuevo.value;//El atributo value de la nueva opción toma el texto ingresado.
+			opcion.id = nuevo.value;//El id de la nueva opción también es el mismo valor.
+			
+			var texto = document.createTextNode(nuevo.value);//Se crea el nodo tipo texto con el texto ingresado.
+			opcion.appendChild(texto);//Se agrega el nodo tipo texto a la nueva opcion.
+			
+			var lista = document.getElementById('milista');//Se toma el elemento select.
+			lista.appendChild(opcion);//Se agrega la nueva opción a la lista.
+		}
+		else
+		{
+			alert('Por favor ingrese un valor primero');
+		}
+	}
+	
+	function removerOpcion()
+	{
+		var nuevo = document.getElementById('nuevaopcion');//Se toma el elemento con el nuevo valor
+		if(nuevo.value)
+		{
+			var lista = document.getElementById('milista');//Se toma el elemento select.
+			var opcion = document.getElementById(nuevo.value);//Se toma la opción cuyo id es igual al ingresado por el usuario.
+			if(!opcion)//Se valida si la variable contiene un objeto válido.
+			{
+				alert('No existe la opción '+nuevo.value);	
+			}
+			else
+			{
+				lista.removeChild(opcion);//Se remueve la opción.
+			}
+		}
+		else
+		{
+			alert('Por favor ingrese un valor primero');
+		}
+	}
+	
+	function validar()
+	{
+	 if(document.getElementById('login').value=='')
+	 {
+	 	document.getElementById('login').focus();
+		alert("Por favor ingrese el login");
+	 }	
+	 if(document.getElementById('name').value=='')
+	 {
+		document.getElementById('name').focus();
+		alert("Por favor ingrese el nombre");	
+	 }
+	 
+	 if(document.getElementById('password').value=='')
+	 {
+		document.getElementById('password').focus();
+		alert("Por favor ingrese el password");	
+	 }
+	}
+	
+</script>
+</head>
+<body>
+<p> REGISTRO DE USUARIOS <br />
+    PRUEBAS</p>
+<p>
+
+<div class="fijopadre">  
+<img src="AMAZONAS15.jpg"&nbsp; class="pos_fija"/></div>
+<table width="200" border="1">
+  <tr>
+    <td>Nombre</td>
+    <td><input name="Input" type="text" id="name"/></td>
+  </tr>
+  <tr>
+    <td>Login</td>
+    <td><input name="login" type="text" id='login'/></td>
+  </tr>
+  <tr>
+    <td>Contrase&ntilde;a</td>
+    <td><input name="Input3" type="password" id="password"/></td>
+  </tr>
+  <tr>
+    <td>Sexo</td>
+    <td><label>
+      <input type="radio" name="sexo" value="F" />
+Masculino</label>
+      <br />
+      <label>
+      <input type="radio" name="sexo" value="M" />
+Femenino</label></td>
+  </tr>
+  <tr>
+    <td>Gustos</td>
+    <td>Futbol
+      <input name="gustos" type="checkbox" value="" />
+Tennis
+<input name="gustos" type="checkbox" value="" /></td>
+  </tr>
+  <tr>
+    <td>Opini&oacute;n</td>
+    <td><textarea name="textarea" cols="10" rows="3"></textarea></td>
+  </tr>
+   <tr>
+    <td>Ciudad</td>
+    <td><select name="select" id='milista'>
+      <option value='1'> Dosquebradas </option>
+      <option value='2'> Pereira </option>
+      <option value='2' selected="selected"> Manizales </option>
+    </select></td>
+   </tr>
+</table>
+
+ <input type="text" id="nuevaopcion"  />
+    <input type="button" onclick="agregarOpcion()" value="Agregar" />
+    <input type="button" onclick="removerOpcion()" value="Remover" />
+	<input type="button" onclick="validar()" value="Registrar" />
+
+<label></label>
+<br />
+  <br />
+</p>
+
+
+</body>
+</html>
